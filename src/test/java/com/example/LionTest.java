@@ -1,31 +1,20 @@
 package com.example;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
-import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 
-@ExtendWith(MockitoExtension.class)
+@RunWith(MockitoJUnitRunner.class)
 public class LionTest {
 
     @Mock
     private Feline feline;
-
-    private static Stream<Arguments> provideArgsForConstructor() {
-        return Stream.of(
-                Arguments.of("Самец", true),
-                Arguments.of("Самка", false)
-        );
-    }
 
     @Test
     public void createLionWithException() {
@@ -38,17 +27,17 @@ public class LionTest {
             actual = e.getMessage();
         }
 
-        assertEquals(expected, actual, "create Lion with incorrect argument");
+        assertEquals("create Lion with incorrect argument", expected, actual);
     }
 
-    @ParameterizedTest
-    @MethodSource("provideArgsForConstructor")
-    public void doesHaveManeReturnCorrectValue(String sex, boolean expected) throws Exception {
-        Lion lion = new Lion(sex, feline);
+    @Test
+    public void doesHaveManeReturnCorrectValue() throws Exception {
+        Lion lion = new Lion("Самец", feline);
+        boolean expected = true;
 
         boolean actual = lion.doesHaveMane();
 
-        assertEquals(expected, actual, "method return incorrect value");
+        assertEquals("method return incorrect value", expected, actual);
     }
 
     @Test
@@ -59,7 +48,7 @@ public class LionTest {
 
         int actual = lion.getKittens();
 
-        assertEquals(expected, actual, "method return incorrect value");
+        assertEquals("method return incorrect value", expected, actual);
     }
 
     @Test
@@ -70,6 +59,6 @@ public class LionTest {
 
         List<String> actualValues = lion.getFood();
 
-        assertEquals(expectedValues, actualValues, "method return incorrect values");
+        assertEquals("method return incorrect values", expectedValues, actualValues);
     }
 }

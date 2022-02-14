@@ -1,16 +1,16 @@
 package com.example;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 
-@ExtendWith(MockitoExtension.class)
+@RunWith(MockitoJUnitRunner.class)
 public class CatTest {
 
     @Mock
@@ -24,7 +24,7 @@ public class CatTest {
 
         List<String> actualValues = cat.getFood();
 
-        assertEquals(expectedValues, actualValues, "method return incorrect values");
+        assertEquals("method return incorrect values", expectedValues, actualValues);
     }
 
     @Test
@@ -34,6 +34,6 @@ public class CatTest {
 
         String actual = cat.getSound();
 
-        assertEquals(expected, actual, "method return incorrect value");
+        assertEquals("method return incorrect value", expected, actual);
     }
 }

@@ -1,15 +1,15 @@
 package com.example;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 
-@ExtendWith(MockitoExtension.class)
+@RunWith(MockitoJUnitRunner.class)
 public class AlexTest {
 
     @Mock
@@ -22,7 +22,7 @@ public class AlexTest {
 
         List<String> actualValues = alex.getFriends();
 
-        assertEquals(expectedValues, actualValues, "method return incorrect values");
+        assertEquals("method return incorrect values", expectedValues, actualValues);
     }
 
     @Test
@@ -32,7 +32,7 @@ public class AlexTest {
 
         String actual = alex.getPlaceOfLiving();
 
-        assertEquals(expected, actual, "method return incorrect value");
+        assertEquals("method return incorrect value", expected, actual);
     }
 
     @Test
@@ -42,6 +42,6 @@ public class AlexTest {
 
         int actual = alex.getKittens();
 
-        assertEquals(expected, actual, "method return incorrect value");
+        assertEquals("method return incorrect value", expected, actual);
     }
 }

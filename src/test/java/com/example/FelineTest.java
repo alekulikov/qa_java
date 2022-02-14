@@ -1,13 +1,15 @@
 package com.example;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import junitparams.JUnitParamsRunner;
+import junitparams.Parameters;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 
+@RunWith(JUnitParamsRunner.class)
 public class FelineTest {
 
     @Test
@@ -17,7 +19,7 @@ public class FelineTest {
 
         List<String> actualValues = feline.eatMeat();
 
-        assertEquals(expectedValues, actualValues, "method return incorrect values");
+        assertEquals("method return incorrect values", expectedValues, actualValues);
     }
 
     @Test
@@ -27,11 +29,11 @@ public class FelineTest {
 
         String actual = feline.getFamily();
 
-        assertEquals(expected, actual, "method return incorrect value");
+        assertEquals("method return incorrect value", expected, actual);
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = {0, -3, Integer.MAX_VALUE})
+    @Test
+    @Parameters({"0", "-3", "2000000000"})
     public void getKittensWithArgumentReturnCorrectValue(int kittensCount) {
         Feline feline = new Feline();
 
